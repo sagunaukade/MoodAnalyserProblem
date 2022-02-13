@@ -9,17 +9,21 @@ namespace MoodAnalyserProblem
     internal class MoodAnalyser
     {
         string message;
+        //create constructor
         public MoodAnalyser(string message)
         {
             this.message = message;
         }
-
         public string AnalyzeMood()
         {
             try
             {
+                if (message.Equals(string.Empty))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_EXCEPTION, "Mood should not be empty");
+                }
 
-                if (message.ToLower().Contains("happy"))
+                else if (message.ToLower().Contains("happy"))
                 {
                     return "happy";
                 }
