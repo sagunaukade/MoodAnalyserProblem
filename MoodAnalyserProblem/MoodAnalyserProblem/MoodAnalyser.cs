@@ -9,11 +9,15 @@ namespace MoodAnalyserProblem
     internal class MoodAnalyser
     {
         string message;
-        //create constructor
+        public MoodAnalyser()
+        {
+            Console.WriteLine("Default constructor");
+        }
         public MoodAnalyser(string message)
         {
             this.message = message;
         }
+
         public string AnalyzeMood()
         {
             try
@@ -22,7 +26,6 @@ namespace MoodAnalyserProblem
                 {
                     throw new CustomException(CustomException.ExceptionType.EMPTY_EXCEPTION, "Mood should not be empty");
                 }
-
                 else if (message.ToLower().Contains("happy"))
                 {
                     return "happy";
@@ -34,8 +37,7 @@ namespace MoodAnalyserProblem
             }
             catch (NullReferenceException)
             {
-                return "happy";
-
+                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, "Mood should not be null");
             }
         }
     }
